@@ -24,7 +24,7 @@ CREATE TABLE `vehicles` (
 `odometer` INT,
 `price` DOUBLE,
 `sold` BOOLEAN,
-PRIMARY KEY (`vin`)
+PRIMARY KEY (vin)
 );
 INSERT INTO vehicles VALUES (1111 , 2020, "Red", "Ford", "Mustang", "Sedan", 15000, 22000.5, 0);
 INSERT INTO vehicles VALUES (2222,  2021, "silver", "Toyota", "Camry", "Sedan", 1200, 25000, 0);
@@ -40,8 +40,8 @@ CREATE TABLE inventory (
 `inventory_id` INT AUTO_INCREMENT,
 `dealership_id` INT,
 `vin` INT,
-PRIMARY KEY (inventory_id), FOREIGN KEY (dealership_id) REFERENCES dealerships(dealership_id),
-FOREIGN KEY (vin) REFERENCES vehicles(vin)
+PRIMARY KEY (inventory_id), FOREIGN KEY (dealership_id) REFERENCES dealerships(dealership_id)ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO inventory VALUES (NULL, 1, "1111");
 INSERT INTO inventory VALUES (NULL, 1, "2222");
@@ -65,7 +65,7 @@ CREATE TABLE sales_contracts (
 `recording_fee` DOUBLE,
 `processing_fee` DOUBLE,
 `financing` BOOL,
-PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) 
+PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CASCADE
 );
 
 INSERT INTO sales_contracts VALUES(NULL, "1996-01-24", 2222, "John Doe", "john.doe@email.com", 375, 25000, 8.00, 8.00, 8.00, 0);
@@ -85,7 +85,7 @@ CREATE TABLE lease_contracts (
 `lease_fee` DOUBLE,
 `monthly_lease_finance` DOUBLE,
 
-PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) 
+PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO lease_contracts VALUES(NULL, "1996-01-24", 3333, "Sonia Doe", "Sonia.doe@email.com", 375, 25000, 8.00, 8.00, 8.00);

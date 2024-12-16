@@ -14,6 +14,8 @@ public interface VehicleDAO {
     List<Vehicle> findByYear(int min, int max);
     List<Vehicle> findMakeModel(String make, String model);
     List<Vehicle>findByVin(int vin);
-    void saveVehicle(Vehicle vehicle);
+    void addVehicle(Vehicle vehicle);
     void removeVehicle(int vin);
+    void changeVehicle(Vehicle vehicle, int vin);
+
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 abstract public class Contract {
+
     protected String customerName;
     protected String customerEmail;
     protected String dateOfContract;
@@ -11,7 +12,8 @@ abstract public class Contract {
     protected double totalPrice;
     protected double monthlyPayment;
 
-    public Contract(String customerName, String customerEmail, Vehicle vehicleSold) {
+    public Contract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold) {
+
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
@@ -20,7 +22,19 @@ abstract public class Contract {
         //take
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate date = LocalDate.now();
-        dateOfContract = date.format(dateFormatter);
+        this.dateOfContract = date.format(dateFormatter);
+    }
+    public Contract( String customerName, String customerEmail, Vehicle vehicleSold) {
+
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.vehicleSold = vehicleSold;
+        this.totalPrice = totalPrice;
+        this.monthlyPayment = monthlyPayment;
+        //take
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate date = LocalDate.now();
+        this.dateOfContract = date.format(dateFormatter);
     }
 
     public String getCustomerName() {

@@ -8,8 +8,8 @@ public class SalesContract extends Contract {
 
 
 
-    public SalesContract(String customerName, String customerEmail, Vehicle vehicleSold, boolean financing) {
-        super(customerName, customerEmail, vehicleSold);
+    public SalesContract(String dateOfContract ,String customerName, String customerEmail, Vehicle vehicleSold, boolean financing) {
+        super(dateOfContract, customerName, customerEmail, vehicleSold);
         this.salesTax = 0.05;
         this.recordingFee = 100.00;
         this.processingFee = vehicleSold.getPrice() >= 10000? 495:295;
@@ -59,4 +59,5 @@ public class SalesContract extends Contract {
                 vehicleSold.getOdometer(), vehicleSold.getPrice(), salesTax, recordingFee, processingFee, totalPrice, financing? "Yes":"No", monthlyPayment);
     }
     //provide overrides for getTotalPrice and getMonthlyPaymentscv
+
 }

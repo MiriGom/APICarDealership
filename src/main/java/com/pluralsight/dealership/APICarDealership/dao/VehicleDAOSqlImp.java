@@ -16,19 +16,20 @@ public class VehicleDAOSqlImp implements VehicleDAO{
     public VehicleDAOSqlImp (DataSource ds) {
         this.ds = ds;
     }
-
-    public void saveVehicle(Vehicle vehicle) {
+    @Override
+    public void addVehicle(Vehicle vehicle) {
         try(Connection connection = ds.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO vehicles VALUES(?,?,?,?,?,?,?");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO vehicles VALUES(?,?,?,?,?,?,?,?,0");
             ps.setInt(1, vehicle.getVin());
             ps.setInt(2, vehicle.getYear());
             ps.setString(3, vehicle.getColor());
             ps.setString(4, vehicle.getMake());
             ps.setString(5, vehicle.getModel());
-            ps.setDouble(6, vehicle.getOdometer());
-            ps.setDouble(7, vehicle.getPrice());
-            ps.setBoolean(8, false);
+            ps.setString(6, vehicle.getVehicleType());
+            ps.setDouble(7, vehicle.getOdometer());
+            ps.setDouble(8, vehicle.getPrice());
+
             ps.executeQuery();
     }catch (SQLException e) {
 
@@ -291,34 +292,33 @@ public class VehicleDAOSqlImp implements VehicleDAO{
 
     @Override
     public void removeVehicle(int vin) {
-        List<Vehicle> vehicleList = new ArrayList<>();
         try(Connection connection = ds.getConnection()) {
 
             PreparedStatement ps = connection.prepareStatement("DELETE FROM vehicles WHERE vin = ?;");
             ps.setInt(1, vin);
             ps.executeUpdate();
 
-
-            /*
-            ResultSet resultSet = ps.getResultSet();
-            while (resultSet.next()) {
-                int vinFromDataBase = resultSet.getInt( "vin");
-                int yearFromDataBase = resultSet.getInt("year");
-                boolean boolFromDataBase = resultSet.getBoolean("sold");
-                String makeFromDataBase = resultSet.getString("make");
-                String modelFromDataBase = resultSet.getString("model");
-                String vehicleTypeFromDataBase = resultSet.getString("vehicle_type");
-                String colorFromDataBase = resultSet.getString("car_color");
-                int odometerFromDataBase = resultSet.getInt("odometer");
-                double priceFromDataBase = resultSet.getDouble("price");
-
-                vehicleList.add(new Vehicle(vinFromDataBase, yearFromDataBase, makeFromDataBase, modelFromDataBase,
-                        vehicleTypeFromDataBase, colorFromDataBase, odometerFromDataBase, priceFromDataBase ));
-            }
-
-             */
         }catch (SQLException e) {
             }
     }
+    @Override
+    public void changeVehicle(Vehicle vehicle, int vin) {
+        try(Connection connection = ds.getConnection()) {
 
+            PreparedStatement ps = connection.prepareStatement("UPDATE vehicles SET vin=?, year=?, make=?, " +
+                    "model=?, vehicle_type=?, color=?, odometer=?, price=?, sold=0 WHERE vin =?");
+            ps.setInt(1, vehicle.getVin());
+            ps.setInt(2, vehicle.getYear());
+            ps.setString(3, vehicle.getMake());
+            ps.setString(4, vehicle.getModel());
+            ps.setString(5, vehicle.getVehicleType());
+            ps.setString(6, vehicle.getColor());
+            ps.setInt(7, vehicle.getOdometer());
+            ps.setDouble(8, vehicle.getPrice());
+            ps.setInt(9, vin);
+            ps.executeUpdate();
+
+        }catch (SQLException e) {
+        }
+    }
 }
