@@ -3,6 +3,7 @@ package com.pluralsight.dealership.APICarDealership.controller;
 import com.pluralsight.dealership.APICarDealership.dao.VehicleDAO;
 import com.pluralsight.dealership.APICarDealership.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,5 +59,10 @@ public class VehicleController {
     @PutMapping("/changeVehicle")
     public void changeVehicle(@RequestBody Vehicle vehicle, @PathVariable("vin") int vin) {
         vehicleDAO.changeVehicle(vehicle, vin);
+    }
+    @PostMapping("addVehicle")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void addVehicles(@RequestBody Vehicle vehicle) {
+        vehicleDAO.addVehicle(vehicle);
     }
 }

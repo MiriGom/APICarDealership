@@ -40,7 +40,7 @@ public class VehicleDAOSqlImp implements VehicleDAO{
         List<Vehicle> vehicleList = new ArrayList<>();
         try(Connection connection = ds.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM vehicles WHERE color = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM vehicles WHERE car_color LIKE ?;");
             ps.setString(1, color);
             ps.executeQuery();
 
@@ -319,6 +319,7 @@ public class VehicleDAOSqlImp implements VehicleDAO{
             ps.executeUpdate();
 
         }catch (SQLException e) {
+            throw new RuntimeException();
         }
     }
 }

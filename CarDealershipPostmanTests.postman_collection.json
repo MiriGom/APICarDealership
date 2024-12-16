@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "8da4e229-db5e-4b0c-b10b-64130290deb1",
+		"name": "CarDealershipPostmanTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38407941"
+	},
+	"item": [
+		{
+			"name": "fetching cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/allCars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"allCars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getprice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehiclePrice?minPrice=1000&maxPrice=20000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehiclePrice"
+					],
+					"query": [
+						{
+							"key": "minPrice",
+							"value": "1000"
+						},
+						{
+							"key": "maxPrice",
+							"value": "20000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMakeModel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleMakeModel?make=Toyota&model=Camry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleMakeModel"
+					],
+					"query": [
+						{
+							"key": "make",
+							"value": "Toyota"
+						},
+						{
+							"key": "model",
+							"value": "Camry"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleYear?minYear=2018&maxYear=2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleYear"
+					],
+					"query": [
+						{
+							"key": "minYear",
+							"value": "2018"
+						},
+						{
+							"key": "maxYear",
+							"value": "2020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getColor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleColor?color=white",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleColor"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "white"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByMiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleMileage?minMiles=0&maxMiles=30000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleMileage"
+					],
+					"query": [
+						{
+							"key": "minMiles",
+							"value": "0"
+						},
+						{
+							"key": "maxMiles",
+							"value": "30000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getVin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleVin?vin=4444",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleVin"
+					],
+					"query": [
+						{
+							"key": "vin",
+							"value": "4444"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeVehicle",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAllContracts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/salesContracts/allContracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"salesContracts",
+						"allContracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "addVehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vin\": 1111,\r\n    \"year\": 2020,\r\n    \"car_color\": \"red\",\r\n    \"make\": \"ford\",\r\n    \"model\": \"mustang\",\r\n    \"vehicle_type\": \"Sedan\",\r\n    \"odometer\": 15000,\r\n    \"price\": 22000.5,\r\n    \"sold\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/vehicles/addVehicle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"addVehicle"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

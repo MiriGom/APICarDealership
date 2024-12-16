@@ -69,18 +69,19 @@ public class SalesContractDAOmySqlImp implements SalesContractDAO{
              """);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                rs.next();
                 date = rs.getString("date");
                 customerName = rs.getString("customer_name");
                 customerEmail = rs.getString("customer_email");
                 make = rs.getString("make");
                 model = rs.getString("model");
                 vehicleType = rs.getString("vehicle_type");
-                color = rs.getString("color");
+                color = rs.getString("car_color");
                 vin = rs.getInt("vin");
                 year = rs.getInt("year");
                 odometer = rs.getInt("odometer");
                 price = rs.getDouble("price");
-                isFinancing = rs.getBoolean("is_financing");
+                isFinancing = rs.getBoolean("financing");
 
                 vehicleSold = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
                 allSalesContracts.add(new SalesContract(date, customerName, customerEmail, vehicleSold, isFinancing));
@@ -113,7 +114,7 @@ public class SalesContractDAOmySqlImp implements SalesContractDAO{
             PreparedStatement ps = connection.prepareStatement("""
              SELECT * FROM sales_contracts
              JOIN vehicles ON vehicles.vin = sales_contracts.vin
-             WHERE sales_contract id = ?;
+             WHERE sales_id = ?;
              """);
 
             ps.setInt(1, id);
@@ -125,12 +126,12 @@ public class SalesContractDAOmySqlImp implements SalesContractDAO{
                 make = rs.getString("make");
                 model = rs.getString("model");
                 vehicleType = rs.getString("vehicle_type");
-                color = rs.getString("color");
+                color = rs.getString("car_color");
                 vin = rs.getInt("vin");
                 year = rs.getInt("year");
                 odometer = rs.getInt("odometer");
                 price = rs.getDouble("price");
-                isFinancing = rs.getBoolean("is_financing");
+                isFinancing = rs.getBoolean("financing");
 
                 vehicleSold = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
                 return new SalesContract(date, customerName, customerEmail, vehicleSold, isFinancing);
