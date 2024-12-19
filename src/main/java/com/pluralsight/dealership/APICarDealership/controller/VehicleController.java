@@ -56,7 +56,7 @@ public class VehicleController {
     }
 
     //fix code
-    @PutMapping("/changeVehicle")
+    @PutMapping("/changeVehicle/{vin}")
     public void changeVehicle(@RequestBody Vehicle vehicle, @PathVariable("vin") int vin) {
         vehicleDAO.changeVehicle(vehicle, vin);
     }
@@ -65,4 +65,10 @@ public class VehicleController {
     public void addVehicles(@RequestBody Vehicle vehicle) {
         vehicleDAO.addVehicle(vehicle);
     }
+    @DeleteMapping("/deleteVehicle/{vin}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void deleteVehicle(@PathVariable int vin){
+        vehicleDAO.removeVehicle(vin);
+    }
+
 }

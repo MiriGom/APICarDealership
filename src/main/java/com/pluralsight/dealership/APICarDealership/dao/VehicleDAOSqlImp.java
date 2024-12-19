@@ -20,7 +20,7 @@ public class VehicleDAOSqlImp implements VehicleDAO{
     public void addVehicle(Vehicle vehicle) {
         try(Connection connection = ds.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO vehicles VALUES(?,?,?,?,?,?,?,?,0");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO vehicles(vin, year, car_color, make, model, vehicle_type, odometer, price, sold) VALUES(?,?,?,?,?,?,?,?,0");
             ps.setInt(1, vehicle.getVin());
             ps.setInt(2, vehicle.getYear());
             ps.setString(3, vehicle.getColor());
@@ -299,14 +299,15 @@ public class VehicleDAOSqlImp implements VehicleDAO{
             ps.executeUpdate();
 
         }catch (SQLException e) {
+            throw new RuntimeException(e);
             }
     }
     @Override
     public void changeVehicle(Vehicle vehicle, int vin) {
         try(Connection connection = ds.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("UPDATE vehicles SET vin=?, year=?, make=?, " +
-                    "model=?, vehicle_type=?, color=?, odometer=?, price=?, sold=0 WHERE vin =?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE vehicles SET vin=?, year=?, car_color =?, make=?, " +
+                    "model=?, vehicle_type=?, odometer=?, price=?, sold=0 WHERE vin =?");
             ps.setInt(1, vehicle.getVin());
             ps.setInt(2, vehicle.getYear());
             ps.setString(3, vehicle.getMake());

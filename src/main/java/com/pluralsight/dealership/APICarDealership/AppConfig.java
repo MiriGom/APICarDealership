@@ -12,9 +12,7 @@ import javax.sql.DataSource;
 import java.util.List;
 @Configuration
 public class AppConfig {
-    //1)Instance variable this.Datasource
-    //2)method no encancupsulation----return type datasource =datasource
-    //3)constru
+
     private BasicDataSource ds;
 
     @Bean
