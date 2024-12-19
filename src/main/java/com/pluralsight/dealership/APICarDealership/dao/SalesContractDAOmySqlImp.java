@@ -38,6 +38,7 @@ public class SalesContractDAOmySqlImp implements SalesContractDAO{
             ps.setDouble(8, contract.getRecordingFee());
             ps.setDouble(9, contract.getProcessingFee());
             ps.setBoolean(10,contract.isFinancing());
+
             ps.executeUpdate();
 
         }catch (SQLException e) {
@@ -69,7 +70,6 @@ public class SalesContractDAOmySqlImp implements SalesContractDAO{
              """);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                rs.next();
                 date = rs.getString("date");
                 customerName = rs.getString("customer_name");
                 customerEmail = rs.getString("customer_email");
