@@ -54,7 +54,7 @@ INSERT INTO inventory VALUES (NULL, 1, "8888");
 INSERT INTO inventory VALUES (NULL, 1, "9999");
 
 CREATE TABLE sales_contracts (
-`sales_id` INT AUTO_INCREMENT,
+`sales_id` INT NOT NULL AUTO_INCREMENT,
 `date` DATE,
 `vin` INT,
 `customer_name` VARCHAR(40),
@@ -69,12 +69,11 @@ PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CAS
 );
 
 INSERT INTO sales_contracts VALUES(NULL, "1996-01-24", 2222, "John Doe", "john.doe@email.com", 375, 25000, 8.00, 8.00, 8.00, 0);
-INSERT INTO sales_contracts VALUES(NULL, "2020-03-22", 4444, "Sarah Smith", "sarah.smith@email.com", 530, 46500.49, 8.00, 8.00, 8.00, 0);
 INSERT INTO sales_contracts VALUES(NULL, "2020-11-09", 8888, "Mark Johnson", "mark.johnson@email.com", 684, 42000, 8.00, 8.00, 8.00, 0);
 INSERT INTO sales_contracts VALUES(NULL, "2024-06-17", 7777, "Emily Davis", "emily.davis@email.com", 490, 37000.99, 8.00, 8.00, 8.00, 0);
 
 CREATE TABLE lease_contracts (
-`sales_id` INT AUTO_INCREMENT,
+`lease_id` INT NOT NULL AUTO_INCREMENT,
 `date` DATE,
 `vin` INT,
 `customer_name` VARCHAR(40),
@@ -85,11 +84,10 @@ CREATE TABLE lease_contracts (
 `lease_fee` DOUBLE,
 `monthly_lease_finance` DOUBLE,
 
-PRIMARY KEY (sales_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CASCADE ON UPDATE CASCADE
+PRIMARY KEY (lease_id), FOREIGN KEY (vin) REFERENCES vehicles(vin) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO lease_contracts VALUES(NULL, "1996-01-24", 3333, "Sonia Doe", "Sonia.doe@email.com", 375, 25000, 8.00, 8.00, 8.00);
-INSERT INTO lease_contracts VALUES(NULL, "2020-03-22", 5555, "Rene Smith", "Rene.smith@email.com", 530, 46500.49, 8.00, 8.00, 8.00);
+
 INSERT INTO lease_contracts VALUES(NULL, "2020-11-09", 6666, "Sam Johnson", "Sam.johnson@email.com", 684, 42000, 8.00, 8.00, 8.00);
 INSERT INTO lease_contracts VALUES(NULL, "2024-06-17", 9999, "Bill Davis", "Bill.davis@email.com", 490, 37000.99, 8.00, 8.00, 8.00);
 

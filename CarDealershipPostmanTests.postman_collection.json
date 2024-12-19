@@ -117,32 +117,6 @@
 			"response": []
 		},
 		{
-			"name": "getColor",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/vehicles/vehicleColor?color=white",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"vehicles",
-						"vehicleColor"
-					],
-					"query": [
-						{
-							"key": "color",
-							"value": "white"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "getByMiles",
 			"request": {
 				"method": "GET",
@@ -166,6 +140,32 @@
 						{
 							"key": "maxMiles",
 							"value": "30000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getColor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/vehicleColor?color=white",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"vehicleColor"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "white"
 						}
 					]
 				}
@@ -201,36 +201,51 @@
 		{
 			"name": "changeVehicle",
 			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "getAllContracts",
-			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vin\": 4875,\r\n    \"year\": 2001,\r\n    \"car_color\": \"red\",\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"Celica\",\r\n    \"vehicle_type\": \"car\",\r\n    \"odometer\": 180000,\r\n    \"price\": 7000.5,\r\n    \"sold\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/salesContracts/allContracts",
+					"raw": "http://localhost:8080/vehicles/changeVehicle/3333",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"salesContracts",
-						"allContracts"
+						"vehicles",
+						"changeVehicle",
+						"3333"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "deleteVehicle",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/deleteVehicle/6666",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"deleteVehicle",
+						"6666"
+					]
+				}
 			},
 			"response": []
 		},
@@ -258,6 +273,146 @@
 					"path": [
 						"vehicles",
 						"addVehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllContracts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/salesContracts/allContracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"salesContracts",
+						"allContracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSalesContract",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dateOfContract\":\"20220119\",\r\n    \"customerName\": \"Bill Doe\",\r\n    \"customerEmail\": \"Bil.doe@email.com\",\r\n    \"vehicleSold\": {\r\n        \"vin\": 4444,\r\n        \"year\": 2001,\r\n        \"make\": \"Ford\",\r\n        \"model\": \"Runner\",\r\n        \"vehicleType\": \"Sedan\",\r\n        \"color\": \"silver\",\r\n        \"odometer\": 14324,\r\n        \"price\": 25000.0\r\n        },\r\n    \"financing\": false,\r\n    \"totalPrice\": 26874.75,\r\n    \"monthlyPayment\": 0.0,\r\n    \"salesTax\": 0.05,\r\n    \"recordingFee\": 100.0,\r\n    \"processingFee\": 495.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/salesContracts/sale",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"salesContracts",
+						"sale"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllLeaseContracts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leaseContracts/allContracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaseContracts",
+						"allContracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LeaseContractById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leaseContracts/lease/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaseContracts",
+						"lease",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addLeaseContract",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dateOfContract\": \"20191120\",\r\n    \"customerName\": \"Sonia Johnson\",\r\n    \"customerEmail\": \"Sonia.johnson@email.com\",\r\n    \"vehicleSold\": {\r\n        \"vin\": 8888,\r\n        \"year\": 2014,\r\n        \"make\": \"Toyota\",\r\n        \"model\": \"Camry\",\r\n        \"vehicleType\": \"car\",\r\n        \"color\": \"silver\",\r\n        \"odometer\": 45344,\r\n        \"price\": 18000.4\r\n    },\r\n    \"expectedEndingValue\": 9000.2,\r\n    \"leaseFee\": 1260.0280000000002,\r\n    \"monthlyLeaseFinance\": 0.2311111111111111,\r\n    \"totalPrice\": 10260.228000000001,\r\n    \"monthlyPayment\": 0.2311111111111111\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/leaseContracts/lease",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaseContracts",
+						"lease"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSalesContractById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/salesContracts/sale/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"salesContracts",
+						"sale",
+						"1"
 					]
 				}
 			},
